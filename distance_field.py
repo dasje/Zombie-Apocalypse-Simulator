@@ -11,7 +11,7 @@ def manhattan_distance(row0, col0, row1, col1):
     Compute the Manhattan distance between the cells
     (row0, col0) and (row1, col1)
     """
-    return (abs(row0) - abs(row1)) + (abs(col0) - abs(col1))
+    return (abs(row0 - row1)) + (abs(col0 - col1))
 
 
 def create_distance_field(entity_list):
@@ -29,7 +29,7 @@ def create_distance_field(entity_list):
             print('y=', y)
             # compare distances to each entity
             for ent in entity_list:
-                dist = abs(x - ent[0]) + abs(y - ent[1])
+                dist = manhattan_distance(x, y, ent[0], ent[1]) #abs(x - ent[0]) + abs(y - ent[1])
                 print(dist)
                 if dist < grid[x][y]:
                     grid[x][y] = dist
